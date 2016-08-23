@@ -1,0 +1,67 @@
+version: '2'
+
+services:
+
+  web:
+    restart: always
+    build: ./web
+    ports:
+      - "8000:8000"
+      - "8888:8888"
+      - "5555:5555"
+    links:
+      - postgres:postgres
+      - rabbitmq:rabbitmq
+      - redis:redis
+      - memcached:memcached
+    volumes:
+      - ./web:/usr/src/app
+      - ./web/src/static:/www/static
+      - ./web/src/media:/www/media
+    env_file: .env_dev_django
+    command: bash -c "python src/manage.py makemigrations && python src/manage.py migrate && echo yes | python src/manage.py collectstatic && /usr/bin/supervisord"
+    #command: bash -c "echo yes | python src/manage.py collectstatic && /usr/bin/supervisord"
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes_from:
+      - web
+    links:
+      - web:web
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data/
+
+  rabbitmq:
+    restart: always
+    image: rabbitmq:3.6.2-management
+    env_file: .env_dev_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+
+  memcached:
+    restart: always
+    image: memcached:latest
+    ports:
+      - "11211:11211"
+
+volumes:
+  redis-data: {}
+  pg-data: {}

@@ -1,0 +1,1 @@
+FROM luissalgadofreire/miniconda:3.5.1-onbuild
