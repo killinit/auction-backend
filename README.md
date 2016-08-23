@@ -22,13 +22,14 @@ Details of the environment:
 - Redis (serving as Django Channels' backend and as Celery's results backend, listening on port 6379)
 - Memcached for caching (listening on port 11211)
 - PostgreSQL (listening on port 5432)
+- Swagger API docs (to quickly and easily consult the RESTful API's endpoints)
 
 
 ## Setup instructions for local deployment - dev
 
 **Note 1**: the below instructions are for Windows. You might need to adjust them for Linux or Mac.
 
-1. Create new docker-machine (locally): ``docker-machine create -d virtualbox auction-backend-dev``
+1. Create new docker-machine: ``docker-machine create -d virtualbox auction-backend-dev``
 2. List docker-machines: ``docker-machine ls``
 3. Activate docker-machine: ``eval $(docker-machine env auction-backend-dev)``
 4. Adjust all IP's within file ``.env_dev_django`` to the IP of the virtual machine
@@ -44,6 +45,7 @@ Details of the environment:
 14. Open Jupyter Notebook: using the same IP, append port 8888 and view jupyter notebook in your browser (e.g. 192.168.99.100:8888)
 15. Open Flower: using the same IP, append port 5555 to view Flower in your browser (e.g. 192.168.99.100:5555)
 16. Open RabbitMQ frontend: using the same IP, append port 15672 and view RabbitMQ in your browser (e.g. 192.168.99.100:15672)
+17. Open Swagger API docs: using the same IP, append "/api/docs/" (e.g. 192.168.99.100/api/docs/)
 
 
 ## Setup instructions for remote deployment (AWS or DigitalOcean) - staging
@@ -68,3 +70,4 @@ Details of the environment:
 17. Open Jupyter Notebook: using the same IP, append port 8888 to view jupyter notebook in your browser (e.g. 194.187.71.89:8888)
 18. Open Flower: using the same IP, append port 5555 to view Flower in your browser (e.g. 194.187.71.89:5555)
 19. Open RabbitMQ frontend: using the same IP, append port 15672 and view RabbitMQ in your browser (e.g. 194.187.71.89:15672)
+20. Open Swagger API docs: using the same IP, append "/api/docs/" (e.g. 194.187.71.89/api/docs/)
