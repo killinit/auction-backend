@@ -1,4 +1,4 @@
-from ..user.serializers import UserProfileSerializer
+from apps.user.api.serializers import UserProfileSerializer
 
 
 # This method overrides JWT_AUTH's JWT_RESPONSE_PAYLOAD_HANDLER setting to include the

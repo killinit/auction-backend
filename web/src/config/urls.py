@@ -3,12 +3,10 @@ import os
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from rest_framework import renderers, response, schemas
-from rest_framework.decorators import api_view, renderer_classes
 from djoser import views as djoser_views
 from rest_framework_jwt import views as jwt_views
 
-from api.user.views import AccountProfileView
+from apps.user.api.views import AccountProfileView
 from apps.main.views import index
 
 

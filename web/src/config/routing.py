@@ -1,6 +1,6 @@
 from channels.routing import route_class
 
-from api.auction.consumers import AuctionConsumer
+from apps.auction.api.consumers import AuctionConsumer
 
 # The channel routing defines what channels get handled by what consumers,
 # including optional matching on message attributes. WebSocket messages of all

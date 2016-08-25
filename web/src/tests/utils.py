@@ -1,6 +1,4 @@
 import requests
-from apps.auction.models import Category, Product, Review, Bid
-from api.auction.serializers import CategorySerializer, ProductSerializer, ReviewSerializer, BidSerializer
 
 
 class Api:
