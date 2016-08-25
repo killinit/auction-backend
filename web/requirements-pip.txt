@@ -26,3 +26,4 @@ django-rest-swagger==0.3
 django-filter
 django-crispy-forms
 django-cors-headers
+coverage==4.2
