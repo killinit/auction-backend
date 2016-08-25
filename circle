@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - sudo pip install docker-compose --upgrade
+
+test:
+  override:
+    - docker-compose run -d --no-deps web
+    - python src/manage.py test
