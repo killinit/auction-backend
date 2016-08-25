@@ -7,7 +7,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django_extensions.db.models import TimeStampedModel
 from audit_log.models import AuthStampedModel
 
-from .managers import CategoryManager, ProductManager, ReviewManager, BidManager, ProductCategoryManager
+from .managers import CategoryManager, ProductManager, ReviewManager, BidManager
 
 
 logger = logging.getLogger(__name__)
@@ -39,8 +39,6 @@ class Product(TimeStampedModel, AuthStampedModel):
 
     # Relations
     categories = models.ManyToManyField('Category',
-                                        through='ProductCategory',
-                                        through_fields=('product', 'category'),
                                         related_name='category_products')
 
     reviewers = models.ManyToManyField('user.User',
@@ -56,7 +54,7 @@ class Product(TimeStampedModel, AuthStampedModel):
     # Attributes
     title = models.CharField(max_length=50, unique=True)
     price = models.DecimalField(max_digits=19, decimal_places=2)
-    num_reviews = models.IntegerField(blank=True, null=True)
+    num_reviews = models.IntegerField(blank=True, null=True, default=0)
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)],
                                               blank=True,
                                               null=True)
@@ -136,30 +134,3 @@ class Bid(TimeStampedModel, AuthStampedModel):
         verbose_name = _("Bid")
         verbose_name_plural = _("Bids")
 
-
-class ProductCategory(TimeStampedModel, AuthStampedModel):
-    # Options
-
-    # Relations
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name="product_category_pairs", db_index=True)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name="category_product_pairs", db_index=True)
-
-    # Attributes
-
-    # Manager
-    objects = ProductCategoryManager()
-
-    # Functions
-    def __str__(self):
-        return _("[{}]: {} ({}) - {} ({})").\
-            format(self.id,
-                   self.product.title,
-                   self.product.id,
-                   self.category.title,
-                   self.category.id)
-
-    # Meta
-    class Meta:
-        unique_together = (("product", "category"),)
-        verbose_name = _("Product Category")
-        verbose_name_plural = _("Product Categories")

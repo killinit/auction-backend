@@ -23,8 +23,3 @@ class ReviewManager(models.Manager):
 class BidManager(models.Manager):
 
     pass
-
-
-class ProductCategoryManager(models.Manager):
-
-    pass

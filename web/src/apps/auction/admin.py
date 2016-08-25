@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category, Product, Review, Bid, ProductCategory
+from .models import Category, Product, Review, Bid
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -30,10 +30,3 @@ class BidAdmin(admin.ModelAdmin):
         model = Bid
 
 admin.site.register(Bid, BidAdmin)
-
-
-class ProductCategoryAdmin(admin.ModelAdmin):
-    class Meta:
-        model = ProductCategory
-
-admin.site.register(ProductCategory, ProductCategoryAdmin)

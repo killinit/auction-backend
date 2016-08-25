@@ -38,6 +38,7 @@
     rating: 5
     num_reviews: 1
     description: Description for product 1.
+    categories: [1,2,3]
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
 - model: auction.product
@@ -47,6 +48,7 @@
     price: 12.00
     rating: 4
     num_reviews: 1
+    categories: [2,3,4]
     description: Description for product 2
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
@@ -57,6 +59,7 @@
     price: 13.00
     rating: 5
     num_reviews: 1
+    categories: [3,4,5]
     description: Description for product 3
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
@@ -66,6 +69,7 @@
     title: Product 4
     price: 14.00
     description: Description for product 4
+    categories: [1,2,3]
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
 - model: auction.product
@@ -74,6 +78,7 @@
     title: Product 5
     price: 15.00
     description: Description for product 5
+    categories: [2,3,4]
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
 - model: auction.product
@@ -157,75 +162,5 @@
     user_id: 1
     product_id: 3
     value: 14.00
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 1
-  fields:
-    product_id: 1
-    category_id: 1
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 2
-  fields:
-    product_id: 1
-    category_id: 2
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 3
-  fields:
-    product_id: 2
-    category_id: 2
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 4
-  fields:
-    product_id: 3
-    category_id: 3
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 5
-  fields:
-    product_id: 4
-    category_id: 4
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 6
-  fields:
-    product_id: 5
-    category_id: 5
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 7
-  fields:
-    product_id: 6
-    category_id: 1
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 8
-  fields:
-    product_id: 7
-    category_id: 2
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 9
-  fields:
-    product_id: 8
-    category_id: 3
-    created: 2016-08-19 20:00:00 
-    modified: 2016-08-19 20:00:00
-- model: auction.productcategory
-  pk: 10
-  fields:
-    product_id: 9
-    category_id: 4
     created: 2016-08-19 20:00:00 
     modified: 2016-08-19 20:00:00
